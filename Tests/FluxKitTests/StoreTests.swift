@@ -32,6 +32,20 @@ final class StoreTests: XCTestCase {
 		//Then
 		XCTAssertEqual(store.state.name, EXPECTED_NAME)
 	}
+	
+	func testStoreShouldCallOnUpdateAfterDispatch() {
+		//Given
+		var flag = false
+		let store = Store(initialState: TestData(),
+						  reducer: testReducer,
+						  onUpdate: { _ in flag = true })
+		
+		//When
+		store.dispatch(action: .changeName("Bubu"));
+		
+		//Then
+		XCTAssertTrue(flag)
+	}
 }
 
 fileprivate struct TestData: Equatable {
