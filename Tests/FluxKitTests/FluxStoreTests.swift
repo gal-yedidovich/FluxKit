@@ -1,5 +1,5 @@
 //
-//  StoreTests.swift
+//  FluxStoreTests.swift
 //  
 //
 //  Created by Gal Yedidovich on 27/11/2021.
@@ -8,14 +8,14 @@
 import XCTest
 @testable import FluxKit
 
-final class StoreTests: XCTestCase {
+final class FluxStoreTests: XCTestCase {
 	
 	func testStoreShouldContainInitialValue() {
 		//Given
 		let data = TestData(name: "Groot", isAlive: true, age: 100)
 		
 		//When
-		let store = Store(initialState: data, reducer: testReducer)
+		let store = FluxStore(initialState: data, reducer: testReducer)
 		
 		//Then
 		XCTAssertEqual(store.state, data)
@@ -24,7 +24,7 @@ final class StoreTests: XCTestCase {
 	func testStoreShouldChangeStateOnDispatch() {
 		//Given
 		let EXPECTED_NAME = "Bubu"
-		let store = Store(initialState: TestData(), reducer: testReducer)
+		let store = FluxStore(initialState: TestData(), reducer: testReducer)
 		
 		//When
 		store.dispatch(action: .changeName(EXPECTED_NAME));
@@ -36,7 +36,7 @@ final class StoreTests: XCTestCase {
 	func testStoreShouldCallOnUpdateAfterDispatch() {
 		//Given
 		var flag = false
-		let store = Store(initialState: TestData(),
+		let store = FluxStore(initialState: TestData(),
 						  reducer: testReducer,
 						  onUpdate: { _ in flag = true })
 		

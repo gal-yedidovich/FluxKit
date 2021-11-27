@@ -1,5 +1,5 @@
 //
-//  Store.swift
+//  FluxStore.swift
 //  
 //
 //  Created by Gal Yedidovich on 27/11/2021.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public class Store<State, Action>: ObservableObject {
+public class FluxStore<State, Action>: ObservableObject {
 	public typealias Reducer = (State, Action) -> State
 	public typealias OnUpdate = (State) -> Void
 	
