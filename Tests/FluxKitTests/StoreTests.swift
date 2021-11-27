@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import FluxTest
+@testable import FluxKit
 
 final class StoreTests: XCTestCase {
 	
