@@ -10,8 +10,8 @@ import Foundation
 public class Store<State, Action>: ObservableObject {
 	public typealias Reducer = (State, Action) -> State
 	
-	@Published internal(set) public var state: State
-	let reducer: Reducer
+	@Published public private(set) var state: State
+	private let reducer: Reducer
 	
 	public init(initialState: State, reducer: @escaping Reducer) {
 		self.state = initialState
